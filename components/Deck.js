@@ -3,6 +3,7 @@ import { Text, View, StyleSheet } from "react-native";
 import pluralize from "pluralize";
 import Button from "./Button";
 import { gray, green, white } from "../utils/colors";
+import { connect } from "react-redux";
 
 class Deck extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -70,6 +71,11 @@ const styles = StyleSheet.create({
   }
 });
 
-//mapDispatchToProps
+const mapStateToProps = (state, { navigation }) => ({
+  deck: state[navigation.getParam("deckId")]
+});
 
-export default Deck;
+export default connect(
+  mapStateToProps,
+  null
+)(Deck);

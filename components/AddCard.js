@@ -8,6 +8,9 @@ import {
 } from "react-native";
 import Button from "./Button";
 import { saveCard } from "../utils/api";
+import { connect } from "react-redux";
+import { createCard } from "../actions/cardAction";
+import { gray, white } from "../utils/colors";
 
 class AddCard extends Component {
   static navigationOptions = () => ({
@@ -22,10 +25,10 @@ class AddCard extends Component {
   handleSubmit = () => {
     deckId = this.props.navigation.getParams("deckId");
 
-    const { question, answer } = this.state;
+    const { ask, answer } = this.state;
 
-    // action do redux => this.props.createCard(deckId, question, answer);
-    saveCard(deckId, { question, answer });
+    this.props.createCard(deckId, ask, answer);
+    saveCard(deckId, { ask, answer });
 
     this.props.navigation.goBack();
 
@@ -92,6 +95,11 @@ const styles = StyleSheet.create({
   }
 });
 
-//mapDispatchToProps
+const mapDispatchToProps = dispatch => ({
+  createCard: (deckId, ask, answer) => dispatch(createCard(deckId, askanswer))
+});
 
-export default AddCard;
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddCard);

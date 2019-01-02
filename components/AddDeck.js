@@ -8,7 +8,9 @@ import {
 import Button from "./Button";
 import { saveDeck } from "../utils/api";
 import { generatedId } from "../utils/helpers";
-import { white, gray } from "../utils/colors";
+import { gray, white } from "../utils/colors";
+import { connect } from "react-redux";
+import { createDeck } from "../actions/deckActions";
 
 class AddDeck extends Component {
   state = {
@@ -29,7 +31,9 @@ class AddDeck extends Component {
 
   handleSubmit = () => {
     deck = this.createDeckObject();
-    // Add to redux => this.props.createDeck(deck.id, deck.name);
+
+    this.props.createDeck(deck.id, deck.name);
+    saveDeck(deck);
 
     this.props.navigation.navigate("Deck", {
       deckId: deck.id,
@@ -81,6 +85,11 @@ const styles = StyleSheet.create({
   }
 });
 
-// mapDispatchToProps
+const mapDispatchToProps = dispatch => ({
+  createDeck: (id, deckName) => dispatch(createDeck(id, deckName))
+});
 
-export default AddDeck;
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddDeck);
