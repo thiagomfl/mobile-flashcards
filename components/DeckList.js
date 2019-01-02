@@ -42,7 +42,7 @@ class DeckList extends Component {
                 navigation={this.props.navigation}
               />
             )}
-            keyExtractor={(item, index) => item.name}
+            keyExtractor={(item, index) => item.id}
           />
         </View>
       ) : (
