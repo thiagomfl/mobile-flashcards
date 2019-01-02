@@ -39,7 +39,7 @@ class AddCard extends Component {
     const { ask, answer } = this.state;
 
     return (
-      <KeyboardAvoidingView bahavior="padding" style={StyleSheet.container}>
+      <KeyboardAvoidingView bahavior="padding" style={styles.container}>
         <View style={styles.element}>
           <Text style={styles.label}> What would you ask? </Text>
           <TextInput

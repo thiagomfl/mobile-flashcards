@@ -45,7 +45,7 @@ class AddDeck extends Component {
     const { input } = this.state;
 
     return (
-      <KeyboardAvoidingView behavior="padding" style={StyleSheet.container}>
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <Text style={Styles.label}> What is the main focus of the deck? </Text>
         <TextInput
           style={styles.input}
