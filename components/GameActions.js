@@ -36,12 +36,11 @@ const styles = StyleSheet.create({
   },
   actions: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 20
+    justifyContent: "space-between"
   },
   answerBtn: {
     padding: 20,
-    margin: 10,
+    margin: 5,
     width: 150,
     borderRadius: 5
   },
