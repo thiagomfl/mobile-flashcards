@@ -4,7 +4,7 @@ import { green, red, white } from "../utils/colors";
 
 const GameActions = ({ recordAnswer }) => (
   <View style={styles.container}>
-    <Text style={styles.heading}>How did you do in this Question?</Text>
+    <Text style={styles.heading}>Your answer was?</Text>
     <View style={styles.actions}>
       <TouchableOpacity
         style={[styles.answerBtn, { backgroundColor: green }]}
@@ -12,6 +12,7 @@ const GameActions = ({ recordAnswer }) => (
       >
         <Text style={styles.btnText}>Correct</Text>
       </TouchableOpacity>
+      <Text>OR</Text>
       <TouchableOpacity
         style={[styles.answerBtn, { backgroundColor: red }]}
         onPress={() => recordAnswer(false)}

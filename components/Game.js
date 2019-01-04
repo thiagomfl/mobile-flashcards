@@ -21,17 +21,17 @@ class Game extends Component {
 
   state = defaultState;
 
-  getRemainingCountMessage = () => {
+  _getRemainingCountMessage = () => {
     const { correctAnswerCount, incorrectAnswerCount } = this.state;
 
     const remainingAsks =
-      this.getDeck().cards.length -
+      this._getDeck().cards.length -
       (correctAnswerCount + incorrectAnswerCount + 1);
 
     return `${remainingAsks} ${pluralize("ask", remainingAsks)} remainings.`;
   };
 
-  getDeck = () => {
+  _getDeck = () => {
     return this.props.navigation.getParam("deck");
   };
 
@@ -53,9 +53,9 @@ class Game extends Component {
       incorrectAnswerCount++;
     }
 
-    const deck = this.getDeck();
+    const deck = this._getDeck();
 
-    if (currentAskIndex === this.getDecks.cards.length - 1) {
+    if (currentAskIndex === deck.cards.length - 1) {
       showResults = true;
 
       clearLocalNotification();
@@ -82,8 +82,8 @@ class Game extends Component {
 
     return !showResults ? (
       <View style={styles.container}>
-        <GameCard card={this.getDeck().cards[currentAskIndex]} />
-        <Text style={styles.count}> {this.getRemainingCountMessage()} </Text>
+        <GameCard card={this._getDeck().cards[currentAskIndex]} />
+        <Text style={styles.count}> {this._getRemainingCountMessage()} </Text>
         <GameActions recordAnswer={this.recordAnswer} />
       </View>
     ) : (

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import Button from "./Button";
-import { blue, white, yellow } from "../utils/colors";
+import { white } from "../utils/colors";
 
 class GameCard extends Component {
   state = {
@@ -18,8 +18,7 @@ class GameCard extends Component {
     const { showAsk } = this.state;
     const { card } = this.props;
 
-    return (
-      <View style={StyleSheet.container}>
+    return <View style={styles.container}>
         <View>
           {showAsk ? (
             <Text style={styles.text}> {card.ask} </Text>
@@ -28,12 +27,11 @@ class GameCard extends Component {
           )}
         </View>
         <View style={{ marginTop: 30 }}>
-          <Button style={{ backgroundColor: blue }} onPress={this.toggleAsk}>
+        <Button style={ styles.btn } onPress={this.toggleAsk}>
             {`See the ${showAsk ? "Answer" : "Ask"}`}
           </Button>
         </View>
-      </View>
-    );
+      </View>;
   }
 }
 
@@ -41,7 +39,8 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: yellow,
+    backgroundColor: "#009faf",
+    margin: 10,
     padding: 30,
     width: 350,
     height: 250,
@@ -59,6 +58,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     color: white
+  },
+  btn: {
+    backgroundColor: "#1976d2",
+    color: "#fff",
+    textAlign: "center",
+    fontSize: 20
   }
 });
 

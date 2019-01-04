@@ -9,8 +9,8 @@ import {
 import Button from "./Button";
 import { saveCard } from "../utils/api";
 import { connect } from "react-redux";
-import { createCard } from "../actions/cardAction";
-import { gray, white } from "../utils/colors";
+import { createCard } from "../actions";
+import { lightcyan, gray } from "../utils/colors";
 
 class AddCard extends Component {
   static navigationOptions = () => ({
@@ -23,7 +23,7 @@ class AddCard extends Component {
   };
 
   handleSubmit = () => {
-    deckId = this.props.navigation.getParams("deckId");
+    deckId = this.props.navigation.getParam("deckId");
 
     const { ask, answer } = this.state;
 
@@ -44,24 +44,24 @@ class AddCard extends Component {
     return (
       <KeyboardAvoidingView bahavior="padding" style={styles.container}>
         <View style={styles.element}>
-          <Text style={styles.label}> What would you ask? </Text>
+          <Text style={styles.label}> What is the Question? </Text>
           <TextInput
             style={styles.input}
             value={ask}
-            placeholder="e.g. What's the color of money?"
+            placeholder="e.g. What's the best programming language?"
             onChangeText={ask => this.setState({ ask })}
           />
         </View>
         <View style={styles.element}>
-          <Text style={styles.label}>What is the answer</Text>
+          <Text style={styles.label}>What is the Answer</Text>
           <TextInput
             style={styles.input}
             value={answer}
-            placeholder="e.g. Green"
+            placeholder="e.g. Javascript"
             onChangeText={answer => this.setState({ answer })}
           />
         </View>
-        <Button onPress={this.handleSubmit}>
+        <Button style={styles.btn} onPress={this.handleSubmit}>
           <Text>Create Card</Text>
         </Button>
       </KeyboardAvoidingView>
@@ -84,19 +84,25 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   input: {
-    backgroundColor: white,
+    backgroundColor: lightcyan,
     width: 350,
     fontSize: 20,
     height: 50,
     padding: 10,
-    borderRadius: 1,
+    borderRadius: 4,
+    borderWidth: 0.5,
     borderColor: gray,
     margin: 20
+  },
+  btn: {
+    color: "#fff",
+    textAlign: "center",
+    fontSize: 20
   }
 });
 
 const mapDispatchToProps = dispatch => ({
-  createCard: (deckId, ask, answer) => dispatch(createCard(deckId, askanswer))
+  createCard: (deckId, ask, answer) => dispatch(createCard(deckId, ask, answer))
 });
 
 export default connect(

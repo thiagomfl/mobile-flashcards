@@ -15,10 +15,12 @@ const GameResults = ({
       (correctAnswerCount * 100) / (correctAnswerCount + incorrectAnswerCount)
     )} %`}</Text>
     <View style={styles.actions}>
-      <Button onPress={() => restartGame()}>Restart Quiz</Button>
+      <Button 
+        style={styles.btn}
+        onPress={() => restartGame()}>Restart Quiz</Button>
       <Button
         onPress={() => navigation.goBack()}
-        style={{ backgroundColor: gray }}
+          style={[{ backgroundColor: gray }, styles.btn ]}
       >
         Go Back to Deck
       </Button>
@@ -45,7 +47,12 @@ const styles = StyleSheet.create({
   },
   actions: {
     marginTop: 50
+  },
+  btn: {
+    color: "#fff",
+    textAlign: "center",
+    fontSize: 20
   }
 });
 
-export default GameResuts;
+export default GameResults;

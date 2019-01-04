@@ -2,7 +2,7 @@ import { AsyncStorage } from "react-native";
 
 export const FLASHCARD_KEY = "Udacity:FlashCards";
 
-export const getDeks = () => {
+export const getDecks = () => {
   return AsyncStorage.getItem(FLASHCARD_KEY).then(results => {
     const data = JSON.parse(results);
     return data;
@@ -25,7 +25,7 @@ export const saveCard = (deckId, card) => {
       cards: [
         ...data[deckId].cards,
         {
-          question: card.question,
+          ask: card.ask,
           answer: card.answer
         }
       ]

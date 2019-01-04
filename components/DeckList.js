@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import DeckSummaryCard from "./DeckSummaryCard";
 import Button from "./Button";
 import { getDecks } from "../utils/api";
-import { receiveDecks } from "../actions/deckActions";
+import { receiveDecks } from "../actions";
 import { white } from "../utils/colors";
 
 class DeckList extends Component {
@@ -14,7 +14,7 @@ class DeckList extends Component {
 
   componentDidMount() {
     getDecks()
-      .then(decks => this.props.getDecks(decks))
+      .then(decks => this.props.receiveDecks(decks))
       .then(() => {
         this.setState({ ready: true });
       });
@@ -26,7 +26,7 @@ class DeckList extends Component {
     if (!this.state.ready) {
       return (
         <View style={styles.blank}>
-          <Text>Loading</Text>
+          <Text>Loading...</Text>
         </View>
       );
     } else {
@@ -39,7 +39,7 @@ class DeckList extends Component {
                 id={item.id}
                 name={item.name}
                 cardCount={item.cards.length}
-                navigation={this.props.navigation}
+                navigation={navigation}
               />
             )}
             keyExtractor={(item, index) => item.id}
@@ -65,6 +65,7 @@ class DeckList extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#b2ebf2",
     padding: 10,
     justifyContent: "flex-start"
   },

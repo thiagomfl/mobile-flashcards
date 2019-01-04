@@ -1,16 +1,15 @@
-import { RECEIVE_DECKS, CREATE_DECK, CREATE_CARD } from "../actions/types";
+import { ActionTypes } from "../actions";
 
 const initialState = null;
 
 const decks = (state = initialState, action) => {
-  switch (action.types) {
-    case RECEIVE_DECKS:
+  switch (action.type) {
+    case ActionTypes.RECEIVE_DECKS:
       return {
         ...state,
         ...action.decks
-      }
-
-    case CREATE_DECK:
+      };
+    case ActionTypes.CREATE_DECK: {
       return {
         ...state,
         [action.id]: {
@@ -18,9 +17,9 @@ const decks = (state = initialState, action) => {
           name: action.name,
           cards: []
         }
-      }
-    
-    case CREATE_CARD:
+      };
+    }
+    case ActionTypes.CREATE_CARD: {
       return {
         ...state,
         [action.deckId]: {
@@ -30,11 +29,11 @@ const decks = (state = initialState, action) => {
             { ask: action.ask, answer: action.answer }
           ]
         }
-      }
-
+      };
+    }
     default:
       return state;
   }
-}
+};
 
-export default decks
+export default decks;

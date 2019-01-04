@@ -12,7 +12,6 @@ class Deck extends Component {
 
   render() {
     const { navigation, deck } = this.props;
-
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -25,15 +24,16 @@ class Deck extends Component {
         <View style={styles.actions}>
           {deck.cards.length !== 0 && (
             <Button
+              style={styles.btn}
               onPress={() => {
-                navigation.navigate("Quiz", { deck });
+                navigation.navigate("Game", { deck });
               }}
             >
               <Text>Start Quiz</Text>
             </Button>
           )}
           <Button
-            style={{ backgroundColor: deck.cards.length !== 0 ? gray : green }}
+            style={[{ backgroundColor: deck.cards.length !== 0 ? gray : green }, styles.btn]}
             onPress={() => {
               navigation.navigate("AddCard", { deckId: deck.id });
             }}
@@ -68,6 +68,11 @@ const styles = StyleSheet.create({
   },
   actions: {
     marginTop: 20
+  },
+  btn: {
+    color: "#fff",
+    textAlign: "center",
+    fontSize: 20
   }
 });
 
