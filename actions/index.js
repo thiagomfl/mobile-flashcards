@@ -12,10 +12,10 @@ export const createDeck = (id, name) => ({
   name
 });
 
-export const createCard = (deckId, question, answer) => ({
+export const createCard = (deckId, ask, answer) => ({
   type: ActionTypes.CREATE_CARD,
   deckId,
-  question,
+  ask,
   answer
 });
 
