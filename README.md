@@ -2,6 +2,10 @@
 
 > A Flashcards app built with React Native with Redux for state management. For the third project of ReactND Udacity.
 
+
+### This project was built and tested in an android environment
+[![tested: android](https://img.shields.io/badge/android-tested-green.svg)](https://www.android.com/)
+
 ## Quick Start
 
 ```bash
