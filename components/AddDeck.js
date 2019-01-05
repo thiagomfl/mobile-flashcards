@@ -36,8 +36,6 @@ class AddDeck extends Component {
 
     saveDeck(deck); 
 
-    console.log(deck)
-
     this.props.navigation.navigate("Deck", {
       deckId: deck.id,
       DeckName: deck.name

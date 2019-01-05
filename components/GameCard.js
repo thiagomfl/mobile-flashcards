@@ -16,22 +16,23 @@ class GameCard extends Component {
 
   render() {
     const { showAsk } = this.state;
-    const { card } = this.props;
 
-    return <View style={styles.container}>
+    return (
+      <View style={styles.container}>
         <View>
           {showAsk ? (
-            <Text style={styles.text}> {card.ask} </Text>
+            <Text style={styles.text}> {this.props.card.ask} </Text>
           ) : (
-            <Text style={styles.text}> {card.answer} </Text>
+            <Text style={styles.text}>   {this.props.card.answer} </Text>
           )}
         </View>
         <View style={{ marginTop: 30 }}>
-        <Button style={ styles.btn } onPress={this.toggleAsk}>
+          <Button style={styles.btn} onPress={this.toggleAsk}>
             {`See the ${showAsk ? "Answer" : "Ask"}`}
           </Button>
         </View>
-      </View>;
+      </View>
+    );
   }
 }
 
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#009faf",
-    margin: 10,
+    margin: 5,
     padding: 30,
     width: 350,
     height: 250,

@@ -10,6 +10,7 @@ class Deck extends Component {
     title: navigation.getParam("name")
   });
 
+
   render() {
     const { navigation, deck } = this.props;
     return (
@@ -33,7 +34,10 @@ class Deck extends Component {
             </Button>
           )}
           <Button
-            style={[{ backgroundColor: deck.cards.length !== 0 ? gray : green }, styles.btn]}
+            style={[
+              { backgroundColor: deck.cards.length !== 0 ? gray : green },
+              styles.btn
+            ]}
             onPress={() => {
               navigation.navigate("AddCard", { deckId: deck.id });
             }}

@@ -43,7 +43,7 @@ class AddCard extends Component {
 
     return (
       <KeyboardAvoidingView bahavior="padding" style={styles.container}>
-        <View style={styles.element}>
+        <View style={styles.element}> 
           <Text style={styles.label}> What is the Question? </Text>
           <TextInput
             style={styles.input}

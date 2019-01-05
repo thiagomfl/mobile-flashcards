@@ -1,17 +1,11 @@
 import { AsyncStorage } from "react-native";
 import { Notifications, Permissions } from "expo";
+import uuid from "uuid";
 
 const NOTIFICATION_KEY = "FlashCards:notifications";
 
 export const generateID = () => {
-  return (
-    Math.random()
-      .toString(36)
-      .substring(2, 15) +
-    Math.random()
-      .toString(36)
-      .substring(2, 15)
-  );
+  return uuid.v4();
 };
 
 export const createNotification = () => ({

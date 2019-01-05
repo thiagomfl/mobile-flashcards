@@ -34,5 +34,3 @@ export const saveCard = (deckId, card) => {
     AsyncStorage.setItem(FLASHCARD_KEY, JSON.stringify(data));
   });
 };
-
-export const removeDeck = () => {};
